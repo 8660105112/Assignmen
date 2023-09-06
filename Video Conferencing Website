@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Video Conferencing</title>
+    <style>
+        #localVideo, #remoteVideo {
+            width: 50%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <video id="localVideo" autoplay></video>
+    <video id="remoteVideo" autoplay></video>
+
+    <script>
+        // Initialize WebRTC connection
+        const localVideo = document.getElementById('localVideo');
+        const remoteVideo = document.getElementById('remoteVideo');
+
+        navigator.mediaDevices.getUserMedia({ video: true, audio: true })
+            .then(stream => {
+                localVideo.srcObject = stream;
+
+                // Implement WebRTC connection setup here
+            })
+            .catch(error => {
+                console.error('Error accessing camera and microphone:', error);
+            });
+    </script>
+</body>
+</html>
